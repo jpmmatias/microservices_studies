@@ -1,9 +1,11 @@
 const express = require('express');
 const { randomBytes } = require('crypto');
 const { json } = require('express');
+const cors = require('cors');
 
 const app = express();
 app.use(json());
+app.use(cors());
 
 const posts = {
 	1: { id: 1, title: 'title 1' },

@@ -2,7 +2,8 @@ import axios from 'axios';
 
 const createPost = async (title) => {
 	try {
-		await axios.post('http://localhost:4000/', { title });
+		const response = await axios.post('http://localhost:4000/posts', { title });
+		console.log(response);
 	} catch (error) {
 		console.log(error);
 	}
