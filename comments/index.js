@@ -32,7 +32,7 @@ app.post('/posts/:id/comments', (req, res) => {
 		id: commentId,
 		content,
 	});
-	res.send().status(201);
+	res.status(201).send();
 });
 
 app.listen(4001, () => {

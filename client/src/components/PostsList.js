@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { fetchPosts } from '../services/posts';
+import CommentForm from './CommentForm';
 
 const PostsList = () => {
 	const [posts, setPosts] = useState({});
@@ -19,6 +20,7 @@ const PostsList = () => {
 		>
 			<div className='card-body'>
 				<h3>{post.title}</h3>
+				<CommentForm post_id={post.id} />
 			</div>
 		</li>
 	));
