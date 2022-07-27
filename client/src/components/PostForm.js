@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { createPost } from '../services/post';
+import { createPost } from '../services/posts';
 
 const PostForm = () => {
 	const [title, setTitle] = useState('');
@@ -11,7 +11,7 @@ const PostForm = () => {
 	};
 
 	return (
-		<div className='container'>
+		<div>
 			<h1 className='my-4'>Create Post</h1>
 			<form onSubmit={(e) => handleSubmit(e)}>
 				<div className='form-group mb-4'>
