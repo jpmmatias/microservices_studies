@@ -10,15 +10,4 @@ const createComment = async (content, post_id) => {
 	}
 };
 
-const fetchComments = async (post_id) => {
-	try {
-		const response = await axios.get(
-			`http://localhost:4001/posts/${post_id}/comments`
-		);
-		return response.data;
-	} catch (error) {
-		console.log(error);
-	}
-};
-
-export { createComment, fetchComments };
+export { createComment };

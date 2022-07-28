@@ -1,14 +1,6 @@
-import React, { useEffect, useState, useCallback } from 'react';
-import { fetchComments } from '../services/comments';
+import React from 'react';
 
-const CommentsList = ({ post_id }) => {
-	const [comments, setComments] = useState([]);
-
-	const handleFetchComments = useCallback(async () => {
-		const fetchedComments = await fetchComments(post_id);
-		setComments(fetchedComments);
-	}, [post_id]);
-
+const CommentsList = ({ comments, post_id }) => {
 	const renderCommments = comments.map((comment) => (
 		<li
 			key={`${post_id}${comment.id}`}
@@ -19,10 +11,6 @@ const CommentsList = ({ post_id }) => {
 			</div>
 		</li>
 	));
-
-	useEffect(() => {
-		handleFetchComments();
-	}, [handleFetchComments]);
 
 	if (comments.length === 0) {
 		return <h3>No commments created </h3>;
