@@ -13,6 +13,7 @@ const commentsByPostId = {
 		{ id: 3, content: 'text 3' },
 	],
 	2: [{ id: 2, content: 'text 2' }],
+	'89b49597': [{ id: 2, content: 'text 2' }],
 };
 
 app.get('/posts/:id/comments', (req, res) => {

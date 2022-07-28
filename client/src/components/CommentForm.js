@@ -15,7 +15,7 @@ const CommentForm = ({ post_id }) => {
 			<h1 className='my-4'>Create Comment</h1>
 			<form onSubmit={(e) => handleSubmit(e)}>
 				<div className='form-group mb-4'>
-					<label htmlFor='title'>Title</label>
+					<label htmlFor='title'>Content</label>
 					<input
 						type='text'
 						className='form-control'

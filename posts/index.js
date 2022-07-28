@@ -10,6 +10,7 @@ app.use(cors());
 const posts = {
 	1: { id: 1, title: 'title 1' },
 	2: { id: 2, title: 'title 2' },
+	'89b49597': { id: 2, title: 'title 3' },
 };
 
 app.get('/posts', (req, res) => {
