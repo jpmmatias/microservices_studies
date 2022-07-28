@@ -1,5 +1,4 @@
 const express = require('express');
-const { randomBytes } = require('crypto');
 const { json } = require('express');
 const cors = require('cors');
 const axios = require('axios');
@@ -10,12 +9,7 @@ app.use(cors());
 
 const posts = {};
 
-app.get('/posts', (req, res) => {
-	res.send(posts).status(200);
-});
-
-app.post('/events', async (req, res) => {
-	const { type, data } = req.body;
+const handleEvent = (type, data) => {
 	if (type === 'PostCreated') {
 		const { id, title } = data;
 
@@ -30,20 +24,35 @@ app.post('/events', async (req, res) => {
 		console.log(post);
 	}
 	if (type === 'CommentUpdated') {
-		const { postId, id } = req.body.data;
+		const { postId, id } = data;
 
 		posts[postId].comments = posts[postId].comments.map((comment) => {
 			if (comment.id === id) return data;
 
 			return comment;
 		});
-
-		console.log(posts);
 	}
-	console.log(posts);
+};
+
+app.get('/posts', (req, res) => {
+	res.send(posts).status(200);
+});
+
+app.post('/events', async (req, res) => {
+	const { type, data } = req.body;
+	handleEvent(type, data);
+
 	res.status(201).send();
 });
 
-app.listen(4002, () => {
+app.listen(4002, async () => {
 	console.log('Listening comments on 4002');
+
+	const res = await axios.get('http://localhost:4005/events');
+
+	for (const event of res.data) {
+		console.log('Processing event', event.type);
+
+		handleEvent(event.type, event.data);
+	}
 });
