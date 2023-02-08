@@ -17,20 +17,20 @@ app.post('/posts', async (req, res) => {
 	const id = randomBytes(4).toString('hex');
 	const { title } = req.body;
 
-	posts[id] = {
+	const post = {
 		id,
 		title,
-	};
+	}
 
-	await axios.post('http://localhost:4005/events', {
+	posts[id] = post;
+
+	await axios.post('http://event-bus-srv:4005/events', {
 		type: 'PostCreated',
-		data: {
-			id,
-			title,
-		},
+		data: post,
 	});
-
-	res.send().status(201);
+	
+	res.status(201)
+	res.json(post).send();
 });
 
 app.post('/events', (req, res) => {
