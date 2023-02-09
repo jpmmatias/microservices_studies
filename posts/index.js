@@ -13,7 +13,7 @@ app.get('/posts/all', (req, res) => {
 	res.send(posts).status(200);
 });
 
-app.post('/posts/create', async (req, res) => {
+app.post('/posts', async (req, res) => {
 	const id = randomBytes(4).toString('hex');
 	const { title } = req.body;
 
