@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const createComment = async (content, post_id) => {
 	try {
-		await axios.post(`http://localhost:4001/posts/${post_id}/comments`, {
+		await axios.post(`http://posts.com/posts/${post_id}/comments`, {
 			content,
 		});
 	} catch (error) {

@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const createPost = async (title) => {
 	try {
-		await axios.post('http://localhost:4000/posts', { title });
+		await axios.post('http://posts.com/posts/create', { title });
 	} catch (error) {
 		console.log(error);
 	}
@@ -10,7 +10,7 @@ const createPost = async (title) => {
 
 const fetchPosts = async () => {
 	try {
-		const response = await axios.get('http://localhost:4002/posts');
+		const response = await axios.get('posts.com/posts');
 		return response.data;
 	} catch (error) {
 		console.log(error);
